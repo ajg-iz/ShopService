@@ -3,7 +3,7 @@ package com.github.ajg_iz;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderListRepo {
+public class OrderListRepo implements OrderRepo {
     List<Order> orders;
 
     OrderListRepo() {
@@ -13,14 +13,17 @@ public class OrderListRepo {
         this.orders = orders;
     }
 
+    @Override
     public List<Order> getOrders() {
         return orders;
     }
 
+    @Override
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
+    @Override
     public boolean addOrder(Order order) {
         return orders.add(order);
     }
@@ -29,6 +32,7 @@ public class OrderListRepo {
         return orders.remove(order);
     }
 
+    @Override
     public Order getOrderByID(int ID) {
         for (Order order : orders) {
             if (order.ID() == ID) {
