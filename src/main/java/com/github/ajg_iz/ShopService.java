@@ -1,38 +1,34 @@
 package com.github.ajg_iz;
 
 public class ShopService {
-    OrderListRepo orderListRepo;
+    OrderRepo orderRepo;
     ProductRepo productRepo;
 
     public ShopService() {
-        this.orderListRepo = new OrderListRepo();
+        this.orderRepo = new OrderMapRepo();
         this.productRepo = new ProductRepo();
     }
-    public ShopService(OrderListRepo orderListRepo, ProductRepo productRepo) {
-        this.orderListRepo = orderListRepo;
+    public ShopService(OrderRepo orderRepo, ProductRepo productRepo) {
+        this.orderRepo = orderRepo;
         this.productRepo = productRepo;
     }
 
     public boolean newOrder(Order order) {
         for (Product each : order.products()) {
-            if (each == null) {
-                System.out.println("Can't take Order, out of "+each.name());
-                return false;
-            }
             if (productRepo.getProductByID(each.ID()) == null) {
                 System.out.println("Can't take Order, out of "+each.name());
                 return false;
             }
         }
-        return orderListRepo.addOrder(order);
+        return orderRepo.addOrder(order);
     }
 
-    public OrderListRepo getOrderListRepo() {
-        return orderListRepo;
+    public OrderRepo getOrderRepo() {
+        return orderRepo;
     }
 
-    public void setOrderListRepo(OrderListRepo orderListRepo) {
-        this.orderListRepo = orderListRepo;
+    public void setOrderRepo(OrderRepo orderRepo) {
+        this.orderRepo = orderRepo;
     }
 
     public ProductRepo getProductRepo() {
@@ -46,7 +42,7 @@ public class ShopService {
     @Override
     public String toString() {
         return "ShopService{" +
-                "orderListRepo=" + orderListRepo +
+                "orderRepo=" + orderRepo +
                 ", productRepo=" + productRepo +
                 '}';
     }

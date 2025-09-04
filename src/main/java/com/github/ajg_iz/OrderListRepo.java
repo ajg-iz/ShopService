@@ -1,6 +1,7 @@
 package com.github.ajg_iz;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class OrderListRepo implements OrderRepo {
@@ -14,7 +15,7 @@ public class OrderListRepo implements OrderRepo {
     }
 
     @Override
-    public List<Order> getOrders() {
+    public Collection<Order> getOrders() {
         return orders;
     }
 
