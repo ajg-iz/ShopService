@@ -35,7 +35,7 @@ public class ProductRepo {
                 return product;
             }
         }
-        return null;
+        throw new IllegalArgumentException("No Product with ID " + ID + " exists.");
     }
 
     public List<Product> getProducts() {
@@ -44,5 +44,12 @@ public class ProductRepo {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductRepo{" +
+                "products=" + products +
+                '}';
     }
 }
